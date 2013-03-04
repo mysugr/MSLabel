@@ -168,6 +168,11 @@ static const int kAlignmentBuffer = 5;
 //                }
 //            }
             
+            if ([character isEqualToString:@"\n"]) {
+                [charsToRemove addIndex:i];
+                break;
+            }
+            
             if (stringWidth <= (self.frame.size.width - 10)) {
                 line = [line stringByAppendingFormat:@"%@", character];
                 [charsToRemove addIndex:i];
@@ -224,7 +229,7 @@ static const int kAlignmentBuffer = 5;
     NSString *lastWord;
     
     // Check for whole words
-     NSArray *wordArray = [string componentsSeparatedByString:@" "];
+     NSArray *wordArray = [[string stringByReplacingOccurrencesOfString:@"\n" withString:@" "] componentsSeparatedByString:@" "];
     lastWord = wordArray.count > 1 ? lastWord = [wordArray lastObject] : @"";
     
     return lastWord;
