@@ -108,9 +108,9 @@ static const int kAlignmentBuffer = 5;
         
         // calculate draw X based on textAlignmentment
         
-        if (self.textAlignment == UITextAlignmentCenter) {
+        if (self.textAlignment == NSTextAlignmentCenter) {
             drawX = floorf((self.frame.size.width - [line sizeWithFont:self.font].width) / 2);
-        } else if (self.textAlignment == UITextAlignmentRight) {
+        } else if (self.textAlignment == NSTextAlignmentRight) {
             drawX = (self.frame.size.width - [line sizeWithFont:self.font].width);
         }
         
@@ -118,7 +118,7 @@ static const int kAlignmentBuffer = 5;
         
         CGContextSetShadowWithColor(UIGraphicsGetCurrentContext(), self.shadowOffset, 0, self.shadowColor.CGColor);
         
-        [line drawAtPoint:CGPointMake(drawX, drawY) forWidth:self.frame.size.width withFont:self.font fontSize:self.font.pointSize lineBreakMode:UILineBreakModeClip baselineAdjustment:UIBaselineAdjustmentNone];
+        [line drawAtPoint:CGPointMake(drawX, drawY) forWidth:self.frame.size.width withFont:self.font fontSize:self.font.pointSize lineBreakMode:NSLineBreakByClipping baselineAdjustment:UIBaselineAdjustmentNone];
     }
 }
 
@@ -141,7 +141,6 @@ static const int kAlignmentBuffer = 5;
 
 - (void)setup {
     _lineHeight = 12;
-    self.minimumFontSize = 12;
     _verticalAlignment = MSLabelVerticalAlignmentMiddle;
 }
 
@@ -190,7 +189,7 @@ static const int kAlignmentBuffer = 5;
         [characterArray removeObjectsAtIndexes:charsToRemove];
     }
     
-    if (self.lineBreakMode == UILineBreakModeWordWrap) {
+    if (self.lineBreakMode == NSLineBreakByWordWrapping) {
         slicedString = [self stringsWithWordsWrappedFromArray:slicedString];
     }
     
