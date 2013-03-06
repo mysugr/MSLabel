@@ -180,12 +180,11 @@ static const int kAlignmentBuffer = 5;
                     line = [line stringByAppendingFormat:@"%@", character];
                     [charsToRemove addIndex:i];
                 }
-                
                 break;
             }
         }
         
-        [slicedString addObject:[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+        [slicedString addObject:line];
         [characterArray removeObjectsAtIndexes:charsToRemove];
     }
     
