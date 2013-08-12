@@ -217,9 +217,11 @@ static const int kAlignmentBuffer = 5;
         NSString *line = [newStrings objectAtIndex:(self.numberOfLines - 1)];
         if (line.length >= 3) {
             line = [line stringByReplacingCharactersInRange:NSMakeRange(line.length - 3, 3) withString:@"..."];
-            [newStrings removeObjectAtIndex:(self.numberOfLines - 1)];
-            [newStrings insertObject:line atIndex:(self.numberOfLines - 1)];
+        } else {
+            line = [NSString stringWithFormat:@"%@ ...", line];
         }
+        [newStrings removeObjectAtIndex:(self.numberOfLines - 1)];
+        [newStrings insertObject:line atIndex:(self.numberOfLines - 1)];
     }
     
     return newStrings;
