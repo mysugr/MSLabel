@@ -67,7 +67,7 @@ static const int kAlignmentBuffer = 5;
         [self.textColor set];   
     }
     
-    int numLines = slicedStrings.count;
+    NSUInteger numLines = slicedStrings.count;
     if (numLines > self.numberOfLines && self.numberOfLines != 0) {
         numLines = self.numberOfLines;
     }
